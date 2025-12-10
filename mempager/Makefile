@@ -6,10 +6,11 @@ all:
 	gcc -c $(CFLAGS) src/cyc.c
 	gcc -c $(CFLAGS) $(LOGFLAGS) src/uvm.c
 	gcc -c $(CFLAGS) $(LOGFLAGS) src/mmu.c
+	gcc -c $(CFLAGS) $(LOGFLAGS) src/pager.c
 	rm -f uvm.a
-	ar -cvq uvm.a uvm.o log.o cyc.o > /dev/null
+	ar -cvq uvm.a uvm.o log.o cyc.o pager.o > /dev/null
 	rm -f mmu.a
-	ar -cvq mmu.a mmu.o log.o cyc.o > /dev/null
+	ar -cvq mmu.a mmu.o log.o cyc.o pager.o > /dev/null
 	rm -f *.o
 	mkdir -p bin
 	gcc $(CFLAGS) mempager-tests/test1.c uvm.a -o bin/test1 -lpthread
